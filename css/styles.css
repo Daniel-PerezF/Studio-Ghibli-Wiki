@@ -18,12 +18,23 @@ nav {
 
 .ghibli-logo {
   width: 15rem;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.ghibli-logo:hover {
+  width: 15.3rem;
 }
 
 #menu {
   align-self: flex-end;
   font-size: 1.7rem;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+#menu:hover {
+  font-size: 1.8rem;
 }
 
 /* Film Content Styles */
@@ -80,6 +91,19 @@ h2 {
   cursor: pointer;
 }
 
+.fa-heart,
+.fa-bookmark {
+  transition: 0.3s ease-in-out;
+}
+
+.fa-heart:hover {
+  color: red;
+}
+
+.fa-bookmark:hover {
+  color: blue;
+}
+
 p {
   margin: 0;
   font-family: "Tenor sans", sans-serif;
@@ -89,6 +113,10 @@ p {
   line-height: 1.1rem;
   padding: 0.5rem;
 }
+
+/* .films {
+
+} */
 
 /* About Page Styling */
 .about {
@@ -117,6 +145,11 @@ p {
   font-size: 2rem;
   padding-left: 0.5rem;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+#close-menu:hover {
+  color: #ee4040;
 }
 
 .menu-left,
@@ -163,4 +196,49 @@ p {
 .about-page {
   display: flex;
   justify-content: center;
+}
+
+/* Full Film Cards */
+.full-card {
+  display: none;
+  width: 100;
+  height: 100%;
+  background-color: #ffff;
+  margin: 1.4rem;
+  border-radius: 0.7rem;
+}
+
+.full-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.full-info > img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.full-info > .fav-watch {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.full-info > p {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.full-info > em {
+  padding-bottom: 0.5rem;
+}
+
+iframe {
+  width: 100%;
 }

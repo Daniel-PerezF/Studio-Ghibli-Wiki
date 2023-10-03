@@ -1,4 +1,12 @@
 // Menu View Swapping
+const $ghibliImg = document.querySelector('.ghibli-logo');
+$ghibliImg.addEventListener('click', function () {
+  $filmsPage.style.display = 'block';
+  $aboutPage.style.display = 'none';
+  $modal.style.display = 'none';
+  $fullCard.style.display = 'none';
+});
+
 const $menu = document.querySelector('#menu');
 const $modal = document.querySelector('.menu-modal');
 $menu.addEventListener('click', function () {
@@ -19,6 +27,7 @@ $aboutBtn.addEventListener('click', function () {
   $filmsPage.style.display = 'none';
   $aboutPage.style.display = 'block';
   $modal.style.display = 'none';
+  $fullCard.style.display = 'none';
 });
 
 const $filmsBtn = document.querySelector('#films');
@@ -26,7 +35,18 @@ $filmsBtn.addEventListener('click', function () {
   $filmsPage.style.display = 'block';
   $aboutPage.style.display = 'none';
   $modal.style.display = 'none';
+  $fullCard.style.display = 'none';
 });
+
+const $filmCard = document.querySelectorAll('.film-card');
+const $fullCard = document.querySelector('.full-card');
+for (let i = 0; i < $filmCard.length; i++) {
+  $filmCard[i].addEventListener('click', function () {
+    $filmsPage.style.display = 'none';
+    $fullCard.style.display = 'block';
+
+  });
+}
 
 // function getGhibliData() {
 //   const xhr = new XMLHttpRequest();
