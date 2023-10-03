@@ -1,20 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>Studio Ghibli Project</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Asul&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Asul&family=Tenor+Sans&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header>
+    <nav>
+      <img class="ghibli-logo" src="images/Studio_Ghibli_logo.webp" alt="studio ghibli logo">
+      <i id="menu" class="fa-solid fa-bars"></i>
+    </nav>
   </header>
-  <main>
+  <main class="container">
+    <div class="column">
+      <div class="film-content">
+        <h2>Films</h2>
+      </div>
+    </div>
+    <div class="film-card">
+      <div class="column-half">
+        <img src="images/Spirited_Away.webp">
+        <div class="fav-watch">
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
+      </div>
+      <div class="column-half">
+        <div class="film-info">
+          <h3>千と千尋の神隠し</h3>
+          <h3>Spirited Away</h3>
+          <p>2001</p>
+          <p>
+            The story is about the adventures of a young ten-year-old girl named Chihiro as she wanders into the world
+            of the gods
+            and spirits...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <div class="column-half">
+        <img src="images/Spirited_Away.webp">
+        <div class="fav-watch">
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
+      </div>
+      <div class="column-half">
+        <div class="film-info">
+          <h3>千と千尋の神隠し</h3>
+          <h3>Spirited Away</h3>
+          <p>2001</p>
+          <p>
+            The story is about the adventures of a young ten-year-old girl named Chihiro as she wanders into the world
+            of the gods
+            and spirits...</p>
+        </div>
+      </div>
+    </div>
+
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://kit.fontawesome.com/9e3ebf648c.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

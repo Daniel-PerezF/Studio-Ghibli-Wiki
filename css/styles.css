@@ -1,0 +1,91 @@
+/* Header Styles */
+header {
+  background-color: #00aeee;
+  padding: 0.8rem;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.container {
+  background-color: #3a3a3a;
+  height: 100vh;
+}
+
+.ghibli-logo {
+  /* border: 1rem solid red; */
+  width: 15rem;
+}
+
+#menu {
+  align-self: flex-end;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+/* Film Content Styles */
+h2 {
+  margin: 0;
+  color: white;
+  font-family: Archivo, sans-serif;
+  padding-top: 1rem;
+}
+
+.film-content {
+  display: flex;
+  justify-content: center;
+}
+
+.film-card {
+  display: flex;
+  background-color: #ffff;
+  margin: 1.4rem;
+  height: 18rem;
+  border-radius: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tests */
+.column-half > img {
+  width: 9rem;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.column > .film-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-half {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex-basis: 50%;
+}
+
+.fav-watch {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.3rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+  font-family: "Tenor sans", sans-serif;
+}
+
+.film-info {
+  line-height: 1.1rem;
+  padding: 0.5rem;
+}
