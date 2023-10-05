@@ -243,3 +243,8 @@ p {
   padding: 0.9rem;
   text-align: center;
 }
+
+.favorite-column > img {
+  width: 9rem;
+  border-radius: 1rem;
+}
