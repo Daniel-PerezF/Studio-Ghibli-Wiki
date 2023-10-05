@@ -68,7 +68,6 @@ function createFilmCardPreview(filmData) {
   $cardDiv.addEventListener('click', function () {
     $filmsPage.classList.add('hidden');
     $fullPage.classList.remove('hidden');
-
     while ($fullPage.firstChild) {
       $fullPage.removeChild($fullPage.lastChild);
       $fullPage.classList.remove('hidden');
@@ -176,3 +175,12 @@ function createFilmCardPreview(filmData) {
   const shorten = filmData.description.slice(0, 101) + '...';
   $desc.textContent = shorten;
 }
+
+// Favoriting Functionality
+
+function toggleNoEntry() {
+  const $noEntries = document.querySelector('.no-entries');
+  $noEntries.classList.add('hidden');
+
+}
+toggleNoEntry();

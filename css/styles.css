@@ -220,3 +220,26 @@ p {
 #ghibli-crew {
   width: 90%;
 }
+
+/* Favorites Page Styling */
+.container4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.favorite-page {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.favorites {
+  background-color: #fff;
+  margin: 1.4rem;
+  height: 100%;
+  border-radius: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.9rem;
+  text-align: center;
+}
