@@ -1,20 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>Studio Ghibli Project</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Asul&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Asul&family=Tenor+Sans&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header>
+    <!-- Header With Menu Button -->
+    <nav>
+      <img class="ghibli-logo" src="images/Studio_Ghibli_logo.webp" alt="studio ghibli logo">
+      <i id="menu" class="fa-solid fa-bars"></i>
+    </nav>
   </header>
-  <main>
+  <main class="container">
+    <!-- Film Card Page -->
+    <div class="films">
+      <div class="column">
+        <div class="film-page">
+          <h2>Films</h2>
+        </div>
+      </div>
+      <div id="append-me">
+      </div>
+    </div>
+    <!-- About Ghibli Page -->
+    <div class="container3 hidden">
+      <div class="column">
+        <div class="about-page">
+          <h2>About Studio Ghibli</h2>
+        </div>
+        <div class="about">
+          <div class="about-img">
+            <img id="ghibli-crew" src="images/GhibliCrew.png" alt="collage of ghibli characters">
+          </div>
+          <p>Studio Ghibli, Inc. (株式会社スタジオジブリ Kabushiki-kaisha Sutajio Jiburi), known simply as Ghibli, is a Japanese
+            animation film
+            studio headquartered in Koganei, Tokyo. They were founded by Isao Takahata, Hayao Miyazaki, Toshio Suzuki,
+            and
+            Yasuyoshi
+            Tokuma.
+            The company began operations in June 1985 as a subsidiary of Tokuma Shoten Co., Ltd. for the purpose of
+            producing
+            animated films directed by Isao Takahata and Hayao Miyazaki. Initially based in Kichijōji, they moved to
+            Kajino-cho,
+            Koganei in August 1992. In June 1997, the company merged with Tokuma Shoten Co., Ltd. and became Tokuma
+            Shoten
+            Co.,
+            Ltd./Studio Ghibli Company (later Studio Ghibli Business Headquarters). In April 2005, Studio Ghibli Co.,
+            Ltd.
+            became
+            independent from Tokuma Shoten.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Menu Modal  -->
+    <div class="container2">
+      <div class="menu-modal hidden">
+        <i id="close-menu" class="fa-solid fa-xmark"></i>
+        <div class="menu-content">
+          <div class="menu-left">
+            <a href="#about" id="about">About</a>
+            <a href="#favorites" id="favorites">Favorites</a>
+          </div>
+          <div class="menu-center">
+            <img id="totoro" src="images/Totoro.png" alt="totoro img">
+          </div>
+          <div class="menu-right">
+            <a href="#films" id="films">Films</a>
+            <a href="#watchlist" id="watchlist">Watchlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full-page">
+    </div>
+
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://kit.fontawesome.com/9e3ebf648c.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

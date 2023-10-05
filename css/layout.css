@@ -1,0 +1,93 @@
+.hidden {
+  display: none !important;
+}
+
+.full-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.fav-watch {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.3rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.full-info > .fav-watch {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+
+#ghibli-crew {
+  width: 90%;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .full-info {
+    flex-direction: row;
+    align-items: start;
+    font-size: 2.5rem;
+  }
+
+  .full-info > .fav-watch {
+    width: 10%;
+    padding-right: 1rem;
+    font-size: 2rem;
+  }
+
+  .fa-heart,
+  .fa-bookmark {
+    padding-right: 2rem;
+  }
+
+  .film-card {
+    width: 30%;
+    flex-wrap: wrap;
+  }
+
+  #append-me {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .menu-modal {
+    height: 30%;
+  }
+
+  .menu-content {
+    height: 80%;
+  }
+
+  #totoro {
+    height: 150%;
+  }
+
+  .about {
+    min-height: 80vh;
+    font-size: 2rem;
+  }
+
+  #about,
+  #films,
+  #favorites,
+  #watchlist {
+    font-size: 2rem;
+  }
+
+  #ghibli-crew {
+    height: 35rem;
+  }
+}
