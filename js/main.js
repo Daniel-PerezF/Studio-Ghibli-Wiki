@@ -66,11 +66,13 @@ function createFilmCardPreview(filmData) {
   $cardDiv.setAttribute('data-id', filmData.id);
   $appendMeDiv.append($cardDiv);
   $cardDiv.addEventListener('click', function () {
+
     $filmsPage.classList.add('hidden');
     $fullPage.classList.remove('hidden');
     while ($fullPage.firstChild) {
       $fullPage.removeChild($fullPage.lastChild);
       $fullPage.classList.remove('hidden');
+
     }
 
     const $columnDiv = document.createElement('div');
@@ -79,6 +81,7 @@ function createFilmCardPreview(filmData) {
 
     const $fullCardDiv = document.createElement('div');
     $fullCardDiv.setAttribute('class', 'full-card');
+
     $columnDiv.append($fullCardDiv);
 
     const $fullInfoDiv = document.createElement('div');
@@ -96,6 +99,60 @@ function createFilmCardPreview(filmData) {
     const $fav = document.createElement('i');
     $fav.setAttribute('class', 'fa-regular fa-heart');
     $favWatchDiv.append($fav);
+    if (data.favorites.some(anime => anime.title === filmData.title)) {
+      // do nothing
+      $fav.setAttribute('class', 'fa-solid fa-heart');
+    }
+    // $fav.addEventListener('click', function () {
+    //   console.log('test');
+    //   console.log($cardDiv);
+    // });
+    // $fav.addEventListener('click', favoritedFilm);
+
+    $fav.addEventListener('click', function () {
+      $fav.setAttribute('class', 'fa-solid fa-heart');
+      // console.log(filmData);
+      // const $favorites = document.querySelector('.favorites');
+
+      // const $favCard = document.createElement('div');
+      // $favCard.setAttribute('class', 'fav-card');
+      // $favorites.append($favCard);
+
+      // const $favColumn = document.createElement('div');
+      // $favColumn.setAttribute('class', 'favorite-column');
+      // $favCard.append($favColumn);
+
+      // const $img = document.createElement('img');
+      // $img.setAttribute('src', data.favorites[0].image);
+      // $favColumn.append($img);
+      // console.log(data.favorites);
+      // const $filmInfo = document.createElement('div');
+      // $filmInfo.setAttribute('class', 'film-info');
+      // $favColumn.append($filmInfo);
+
+      // const $filmTitle = document.createElement('h3');
+      // $filmInfo.append($filmTitle);
+      // $filmTitle.textContent = filmData.original_title;
+
+      // const $filmTitleEng = document.createElement('h3');
+      // $filmInfo.append($filmTitleEng);
+      // $filmTitleEng.textContent = filmData.title;
+
+      const favoriteObj = {
+        id: filmData.id,
+        title: filmData.title,
+        original_title: filmData.original_title,
+        image: filmData.image
+      };
+      // console.log('data.fav:', data.favorites.includes(favoriteObj, 0));
+      // if (!data.favorites.includes(favoriteObj, 0)) {
+      //   data.favorites.push(favoriteObj);
+      // }
+      if (!data.favorites.some(anime => anime.title === filmData.title)) {
+        // do nothing
+        data.favorites.push(favoriteObj);
+      }
+    });
 
     const $watch = document.createElement('i');
     $watch.setAttribute('class', 'fa-regular fa-bookmark');
@@ -184,3 +241,33 @@ function toggleNoEntry() {
 
 }
 toggleNoEntry();
+
+// function favoritedFilm() {
+
+//   const $favorites = document.querySelector('.favorites');
+
+//   const $favCard = document.createElement('div');
+//   $favCard.setAttribute('class', 'fav-card');
+//   $favorites.append($favCard);
+
+//   const $favColumn = document.createElement('div');
+//   $favColumn.setAttribute('class', 'favorite-column');
+//   $favCard.append($favColumn);
+
+//   const $img = document.createElement('div');
+//   $img.setAttribute('src', '');
+//   $favColumn.append($img);
+
+//   const $filmInfo = document.createElement('div');
+//   $filmInfo.setAttribute('class', 'film-info');
+//   $favColumn.append($filmInfo);
+
+//   const $filmTitle = document.createElement('h3');
+//   $filmInfo.append($filmTitle);
+//   $filmTitle.textContent = '';
+
+//   const $filmTitleEng = document.createElement('h3');
+//   $filmInfo.append($filmTitleEng);
+//   $filmTitleEng.textContent = '';
+
+// }

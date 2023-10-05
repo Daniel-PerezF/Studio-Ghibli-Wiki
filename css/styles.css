@@ -236,8 +236,7 @@ p {
 
 .favorites {
   background-color: #fff;
-  margin: 1.4rem;
-  height: 100%;
+  margin: 2.5rem;
   border-radius: 0.7rem;
   flex-wrap: wrap;
   padding: 0.9rem;
@@ -247,4 +246,8 @@ p {
 .favorite-column > img {
   width: 9rem;
   border-radius: 1rem;
+}
+
+.fav-watch > .fa-solid {
+  color: red;
 }
