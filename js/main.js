@@ -4,28 +4,19 @@ const $ghibliImg = document.querySelector('.ghibli-logo');
 $ghibliImg.addEventListener('click', function () {
   $filmsPage.classList.remove('hidden');
   $aboutPage.classList.add('hidden');
-  // $filmsPage.style.display = 'block';
-  // $aboutPage.style.display = 'none';
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
-  // $modal.style.display = 'none';
-  // $fullCard.style.display = 'none';
-  // $fullPage.style.display = 'none';
 });
 
 const $menu = document.querySelector('#menu');
 const $modal = document.querySelector('.menu-modal');
 $menu.addEventListener('click', function () {
   $modal.classList.remove('hidden');
-
-  // $modal.style.display = 'block';
-
 });
 
 const $closeModal = document.querySelector('#close-menu');
 $closeModal.addEventListener('click', function () {
   $modal.classList.add('hidden');
-  // $modal.style.display = 'none';
 });
 
 const $filmsPage = document.querySelector('.films');
@@ -33,16 +24,13 @@ const $aboutBtn = document.querySelector('#about');
 const $aboutPage = document.querySelector('.container3');
 
 $aboutBtn.addEventListener('click', function () {
-  const $fullCard = document.querySelector('.full-page > .column');
-  $fullCard.remove();
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.remove('hidden');
   $modal.classList.add('hidden');
-  // $filmsPage.style.display = 'none';
-  // $aboutPage.style.display = 'block';
-  // $modal.style.display = 'none';
+  while ($fullPage.firstChild) {
+    $fullPage.removeChild($fullPage.lastChild);
 
-  // $fullCard.style.display = 'none';
+  }
 });
 
 const $filmsBtn = document.querySelector('#films');
@@ -51,9 +39,6 @@ $filmsBtn.addEventListener('click', function () {
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.remove('hidden');
-  // $filmsPage.style.display = 'block';
-  // $aboutPage.style.display = 'none';
-  // $modal.style.display = 'none';
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
 
@@ -70,13 +55,11 @@ function getGhibliData() {
     // console.log('status:', xhr.status);
     // console.log(filmInfo);
 
-    // const $fullPage = document.querySelector('.full-page');
-
     function createFilmCardPreview() {
       for (let i = 0; i < filmInfo.length; i++) {
         const filmData = filmInfo[i];
 
-        const $appendMeDiv = document.querySelector('#appendMe');
+        const $appendMeDiv = document.querySelector('#append-me');
         const $cardDiv = document.createElement('div');
         $cardDiv.setAttribute('class', 'film-card');
         $cardDiv.setAttribute('data-id', filmData.id);
@@ -85,11 +68,7 @@ function getGhibliData() {
 
           $filmsPage.classList.add('hidden');
           $fullPage.classList.remove('hidden');
-          // $fullCard.classList.remove('hidden');
 
-          // $filmsPage.style.display = 'none';
-          // $fullCard.style.display = 'block';
-          // $fullPage.style.display = 'block';
           while ($fullPage.firstChild) {
             $fullPage.removeChild($fullPage.lastChild);
             $fullPage.classList.remove('hidden');
@@ -124,28 +103,32 @@ function getGhibliData() {
           $watch.setAttribute('class', 'fa-regular fa-bookmark');
           $favWatchDiv.append($watch);
 
+          const $textInfoDiv = document.createElement('div');
+          $textInfoDiv.setAttribute('class', 'text-info');
+          $fullInfoDiv.append($textInfoDiv);
+
           const $filmName = document.createElement('h3');
-          $fullInfoDiv.append($filmName);
+          $textInfoDiv.append($filmName);
           $filmName.textContent = filmData.original_title;
 
           const $filmNameEng = document.createElement('h3');
-          $fullInfoDiv.append($filmNameEng);
+          $textInfoDiv.append($filmNameEng);
           $filmNameEng.textContent = filmData.title;
 
           const $year = document.createElement('p');
-          $fullInfoDiv.append($year);
+          $textInfoDiv.append($year);
           $year.textContent = filmData.release_date;
 
           const $desc = document.createElement('p');
-          $fullInfoDiv.append($desc);
+          $textInfoDiv.append($desc);
           $desc.textContent = filmData.description;
 
           const $director = document.createElement('p');
-          $fullInfoDiv.append($director);
+          $textInfoDiv.append($director);
           $director.textContent = `Director: ${filmData.director}`;
 
           const $producer = document.createElement('p');
-          $fullInfoDiv.append($producer);
+          $textInfoDiv.append($producer);
           $producer.textContent = `Producer: ${filmData.producer}`;
 
         });
