@@ -1,12 +1,14 @@
 // Menu View Swapping
 const $fullPage = document.querySelector('.full-page');
 const $ghibliImg = document.querySelector('.ghibli-logo');
+
 $ghibliImg.addEventListener('click', function () {
   $filmsPage.classList.remove('hidden');
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
   $favoritesView.classList.add('hidden');
+  removeDom();
 });
 
 const $menu = document.querySelector('#menu');
@@ -29,6 +31,7 @@ $aboutBtn.addEventListener('click', function () {
   $aboutPage.classList.remove('hidden');
   $modal.classList.add('hidden');
   $favoritesView.classList.add('hidden');
+  removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -41,6 +44,7 @@ $filmsBtn.addEventListener('click', function () {
   $modal.classList.add('hidden');
   $fullPage.classList.remove('hidden');
   $favoritesView.classList.add('hidden');
+  removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -69,14 +73,12 @@ function createFilmCardPreview(filmData) {
   $cardDiv.setAttribute('data-id', filmData.id);
   $appendMeDiv.append($cardDiv);
   $cardDiv.addEventListener('click', function () {
-
     $filmsPage.classList.add('hidden');
     $favoritesView.classList.add('hidden');
     $fullPage.classList.remove('hidden');
     while ($fullPage.firstChild) {
       $fullPage.removeChild($fullPage.lastChild);
       $fullPage.classList.remove('hidden');
-
     }
 
     const $columnDiv = document.createElement('div');
@@ -110,6 +112,7 @@ function createFilmCardPreview(filmData) {
 
     $fav.addEventListener('click', function () {
       $fav.setAttribute('class', 'fa-solid fa-heart');
+      // test.remove();
       const favoriteObj = {
         id: filmData.id,
         title: filmData.title,
@@ -120,7 +123,6 @@ function createFilmCardPreview(filmData) {
       if (!data.favorites.some(anime => anime.title === filmData.title)) {
         // do nothing
         data.favorites.push(favoriteObj);
-        location.reload();
       }
     });
 
@@ -200,7 +202,6 @@ function toggleNoEntry() {
   } else {
     $noEntries.classList.remove('hidden');
   }
-
 }
 
 const $favoritesTab = document.querySelector('#favorites');
@@ -208,6 +209,7 @@ const $favoritesView = document.querySelector('.container4');
 $favoritesTab.addEventListener('click', function () {
   toggleNoEntry();
 
+  favoritedFilm();
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
@@ -216,10 +218,9 @@ $favoritesTab.addEventListener('click', function () {
 });
 
 function favoritedFilm() {
+  const $favorites = document.querySelector('.favorites');
 
   for (let i = 0; i < data.favorites.length; i++) {
-    const $favorites = document.querySelector('.favorites');
-
     const $favCard = document.createElement('div');
     $favCard.setAttribute('class', 'fav-card');
     $favorites.append($favCard);
@@ -245,4 +246,10 @@ function favoritedFilm() {
     $filmTitleEng.textContent = data.favorites[i].title;
   }
 }
-favoritedFilm();
+
+function removeDom() {
+  const favQ = document.querySelectorAll('.fav-card');
+  for (let i = 0; i < favQ.length; i++) {
+    favQ[i].remove();
+  }
+}
