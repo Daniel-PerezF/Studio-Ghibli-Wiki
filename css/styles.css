@@ -256,3 +256,42 @@ p {
   justify-content: center;
   color: #f68282;
 }
+
+/* Delete Modal and Buttons */
+.container5 {
+  /* display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column; */
+}
+
+.delete-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+/* #yes{
+
+} */
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+.remove {
+  background-color: #ffa69e;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-family: "Tenor sans", sans-serif;
+  transition: 0.2s ease;
+}
+
+.remove:hover {
+  box-shadow: 2px 2px 2px #d79d98;
+}

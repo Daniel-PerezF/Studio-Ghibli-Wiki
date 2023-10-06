@@ -243,6 +243,12 @@ function favoritedFilm() {
     const $filmTitleEng = document.createElement('h3');
     $filmInfo.append($filmTitleEng);
     $filmTitleEng.textContent = data.favorites[i].title;
+
+    const $removeBtn = document.createElement('button');
+    $removeBtn.setAttribute('class', 'remove');
+    $removeBtn.setAttribute('type', 'button');
+    $removeBtn.textContent = 'Remove';
+    $filmInfo.append($removeBtn);
   }
 }
 
