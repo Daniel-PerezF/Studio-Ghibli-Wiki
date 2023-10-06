@@ -6,6 +6,7 @@ $ghibliImg.addEventListener('click', function () {
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
+  $favoritesView.classList.add('hidden');
 });
 
 const $menu = document.querySelector('#menu');
@@ -27,6 +28,7 @@ $aboutBtn.addEventListener('click', function () {
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.remove('hidden');
   $modal.classList.add('hidden');
+  $favoritesView.classList.add('hidden');
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -38,6 +40,7 @@ $filmsBtn.addEventListener('click', function () {
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.remove('hidden');
+  $favoritesView.classList.add('hidden');
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -68,6 +71,7 @@ function createFilmCardPreview(filmData) {
   $cardDiv.addEventListener('click', function () {
 
     $filmsPage.classList.add('hidden');
+    $favoritesView.classList.add('hidden');
     $fullPage.classList.remove('hidden');
     while ($fullPage.firstChild) {
       $fullPage.removeChild($fullPage.lastChild);
@@ -103,40 +107,9 @@ function createFilmCardPreview(filmData) {
       // do nothing
       $fav.setAttribute('class', 'fa-solid fa-heart');
     }
-    // $fav.addEventListener('click', function () {
-    //   console.log('test');
-    //   console.log($cardDiv);
-    // });
-    // $fav.addEventListener('click', favoritedFilm);
 
     $fav.addEventListener('click', function () {
       $fav.setAttribute('class', 'fa-solid fa-heart');
-      // console.log(filmData);
-      // const $favorites = document.querySelector('.favorites');
-
-      // const $favCard = document.createElement('div');
-      // $favCard.setAttribute('class', 'fav-card');
-      // $favorites.append($favCard);
-
-      // const $favColumn = document.createElement('div');
-      // $favColumn.setAttribute('class', 'favorite-column');
-      // $favCard.append($favColumn);
-
-      // const $img = document.createElement('img');
-      // $img.setAttribute('src', data.favorites[0].image);
-      // $favColumn.append($img);
-      // console.log(data.favorites);
-      // const $filmInfo = document.createElement('div');
-      // $filmInfo.setAttribute('class', 'film-info');
-      // $favColumn.append($filmInfo);
-
-      // const $filmTitle = document.createElement('h3');
-      // $filmInfo.append($filmTitle);
-      // $filmTitle.textContent = filmData.original_title;
-
-      // const $filmTitleEng = document.createElement('h3');
-      // $filmInfo.append($filmTitleEng);
-      // $filmTitleEng.textContent = filmData.title;
 
       const favoriteObj = {
         id: filmData.id,
@@ -144,10 +117,7 @@ function createFilmCardPreview(filmData) {
         original_title: filmData.original_title,
         image: filmData.image
       };
-      // console.log('data.fav:', data.favorites.includes(favoriteObj, 0));
-      // if (!data.favorites.includes(favoriteObj, 0)) {
-      //   data.favorites.push(favoriteObj);
-      // }
+
       if (!data.favorites.some(anime => anime.title === filmData.title)) {
         // do nothing
         data.favorites.push(favoriteObj);
@@ -237,37 +207,55 @@ function createFilmCardPreview(filmData) {
 
 function toggleNoEntry() {
   const $noEntries = document.querySelector('.no-entries');
-  $noEntries.classList.add('hidden');
+  const empty = data.favorites.length;
+  if (empty !== 0) {
+    $noEntries.classList.remove('hidden');
+  } else {
+    $noEntries.classList.add('hidden');
+  }
 
 }
 toggleNoEntry();
 
-// function favoritedFilm() {
+const $favoritesTab = document.querySelector('#favorites');
+const $favoritesView = document.querySelector('.container4');
+$favoritesTab.addEventListener('click', function () {
+  toggleNoEntry();
+  $filmsPage.classList.add('hidden');
+  $aboutPage.classList.add('hidden');
+  $modal.classList.add('hidden');
+  $fullPage.classList.add('hidden');
+  $favoritesView.classList.remove('hidden');
+});
 
-//   const $favorites = document.querySelector('.favorites');
+function favoritedFilm() {
 
-//   const $favCard = document.createElement('div');
-//   $favCard.setAttribute('class', 'fav-card');
-//   $favorites.append($favCard);
+  for (let i = 0; i < data.favorites.length; i++) {
+    const $favorites = document.querySelector('.favorites');
 
-//   const $favColumn = document.createElement('div');
-//   $favColumn.setAttribute('class', 'favorite-column');
-//   $favCard.append($favColumn);
+    const $favCard = document.createElement('div');
+    $favCard.setAttribute('class', 'fav-card');
+    $favorites.append($favCard);
 
-//   const $img = document.createElement('div');
-//   $img.setAttribute('src', '');
-//   $favColumn.append($img);
+    const $favColumn = document.createElement('div');
+    $favColumn.setAttribute('class', 'favorite-column');
+    $favCard.append($favColumn);
 
-//   const $filmInfo = document.createElement('div');
-//   $filmInfo.setAttribute('class', 'film-info');
-//   $favColumn.append($filmInfo);
+    const $img = document.createElement('img');
+    $img.setAttribute('src', data.favorites[i].image);
+    $favColumn.append($img);
 
-//   const $filmTitle = document.createElement('h3');
-//   $filmInfo.append($filmTitle);
-//   $filmTitle.textContent = '';
+    const $filmInfo = document.createElement('div');
+    $filmInfo.setAttribute('class', 'film-info');
+    $favColumn.append($filmInfo);
 
-//   const $filmTitleEng = document.createElement('h3');
-//   $filmInfo.append($filmTitleEng);
-//   $filmTitleEng.textContent = '';
+    const $filmTitle = document.createElement('h3');
+    $filmInfo.append($filmTitle);
+    $filmTitle.textContent = data.favorites[i].original_title;
 
-// }
+    const $filmTitleEng = document.createElement('h3');
+    $filmInfo.append($filmTitleEng);
+    $filmTitleEng.textContent = data.favorites[i].title;
+  }
+}
+favoritedFilm();
