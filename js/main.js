@@ -208,14 +208,15 @@ function createFilmCardPreview(filmData) {
 function toggleNoEntry() {
   const $noEntries = document.querySelector('.no-entries');
   const empty = data.favorites.length;
-  if (empty !== 0) {
-    $noEntries.classList.remove('hidden');
-  } else {
+  // console.log(empty);
+  if (empty > 0) {
     $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
   }
 
 }
-toggleNoEntry();
+// toggleNoEntry();
 
 const $favoritesTab = document.querySelector('#favorites');
 const $favoritesView = document.querySelector('.container4');

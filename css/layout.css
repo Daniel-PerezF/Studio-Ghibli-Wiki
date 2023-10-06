@@ -33,7 +33,7 @@
   margin: 1rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1078px) {
   .full-info {
     flex-direction: row;
     align-items: start;
@@ -89,5 +89,14 @@
 
   #ghibli-crew {
     height: 35rem;
+  }
+
+  .favorite-column {
+    display: flex;
+  }
+
+  .favorites {
+    display: flex;
+    height: 100vh;
   }
 }

@@ -238,6 +238,7 @@ p {
 
 .favorites {
   /* background-color: #fff; */
+  height: 100vh;
 
   /* margin: rem; */
   border-radius: 0.7rem;
@@ -261,4 +262,11 @@ p {
   border-radius: 0.7rem;
   flex-wrap: wrap;
   padding: 0.9rem;
+}
+
+.no-entries {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: #f68282;
 }
