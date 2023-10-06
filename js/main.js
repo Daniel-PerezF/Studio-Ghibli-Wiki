@@ -112,7 +112,6 @@ function createFilmCardPreview(filmData) {
 
     $fav.addEventListener('click', function () {
       $fav.setAttribute('class', 'fa-solid fa-heart');
-      // test.remove();
       const favoriteObj = {
         id: filmData.id,
         title: filmData.title,
