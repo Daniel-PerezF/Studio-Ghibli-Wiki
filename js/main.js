@@ -110,7 +110,6 @@ function createFilmCardPreview(filmData) {
 
     $fav.addEventListener('click', function () {
       $fav.setAttribute('class', 'fa-solid fa-heart');
-
       const favoriteObj = {
         id: filmData.id,
         title: filmData.title,
@@ -121,6 +120,7 @@ function createFilmCardPreview(filmData) {
       if (!data.favorites.some(anime => anime.title === filmData.title)) {
         // do nothing
         data.favorites.push(favoriteObj);
+        location.reload();
       }
     });
 
@@ -165,18 +165,6 @@ function createFilmCardPreview(filmData) {
   $filmImg.setAttribute('src', filmData.image);
   $halfDiv.append($filmImg);
 
-  const $favWatchDiv = document.createElement('div');
-  $favWatchDiv.setAttribute('class', 'fav-watch');
-  $halfDiv.append($favWatchDiv);
-
-  const $favIcon = document.createElement('i');
-  $favIcon.setAttribute('class', 'fa-regular fa-heart');
-  $favWatchDiv.append($favIcon);
-
-  const $watchIcon = document.createElement('i');
-  $watchIcon.setAttribute('class', 'fa-regular fa-bookmark');
-  $favWatchDiv.append($watchIcon);
-
   const $halfDiv2 = document.createElement('div');
   $halfDiv2.setAttribute('class', 'column-half');
   $cardDiv.append($halfDiv2);
@@ -204,11 +192,9 @@ function createFilmCardPreview(filmData) {
 }
 
 // Favoriting Functionality
-
 function toggleNoEntry() {
   const $noEntries = document.querySelector('.no-entries');
   const empty = data.favorites.length;
-  // console.log(empty);
   if (empty > 0) {
     $noEntries.classList.add('hidden');
   } else {
@@ -216,12 +202,12 @@ function toggleNoEntry() {
   }
 
 }
-// toggleNoEntry();
 
 const $favoritesTab = document.querySelector('#favorites');
 const $favoritesView = document.querySelector('.container4');
 $favoritesTab.addEventListener('click', function () {
   toggleNoEntry();
+
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
