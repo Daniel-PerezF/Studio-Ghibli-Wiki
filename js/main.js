@@ -1,11 +1,14 @@
 // Menu View Swapping
 const $fullPage = document.querySelector('.full-page');
 const $ghibliImg = document.querySelector('.ghibli-logo');
+
 $ghibliImg.addEventListener('click', function () {
   $filmsPage.classList.remove('hidden');
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
+  $favoritesView.classList.add('hidden');
+  removeDom();
 });
 
 const $menu = document.querySelector('#menu');
@@ -27,6 +30,8 @@ $aboutBtn.addEventListener('click', function () {
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.remove('hidden');
   $modal.classList.add('hidden');
+  $favoritesView.classList.add('hidden');
+  removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -38,6 +43,8 @@ $filmsBtn.addEventListener('click', function () {
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
   $fullPage.classList.remove('hidden');
+  $favoritesView.classList.add('hidden');
+  removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -67,8 +74,8 @@ function createFilmCardPreview(filmData) {
   $appendMeDiv.append($cardDiv);
   $cardDiv.addEventListener('click', function () {
     $filmsPage.classList.add('hidden');
+    $favoritesView.classList.add('hidden');
     $fullPage.classList.remove('hidden');
-
     while ($fullPage.firstChild) {
       $fullPage.removeChild($fullPage.lastChild);
       $fullPage.classList.remove('hidden');
@@ -80,6 +87,7 @@ function createFilmCardPreview(filmData) {
 
     const $fullCardDiv = document.createElement('div');
     $fullCardDiv.setAttribute('class', 'full-card');
+
     $columnDiv.append($fullCardDiv);
 
     const $fullInfoDiv = document.createElement('div');
@@ -97,6 +105,25 @@ function createFilmCardPreview(filmData) {
     const $fav = document.createElement('i');
     $fav.setAttribute('class', 'fa-regular fa-heart');
     $favWatchDiv.append($fav);
+    if (data.favorites.some(anime => anime.title === filmData.title)) {
+      // do nothing
+      $fav.setAttribute('class', 'fa-solid fa-heart');
+    }
+
+    $fav.addEventListener('click', function () {
+      $fav.setAttribute('class', 'fa-solid fa-heart');
+      const favoriteObj = {
+        id: filmData.id,
+        title: filmData.title,
+        original_title: filmData.original_title,
+        image: filmData.image
+      };
+
+      if (!data.favorites.some(anime => anime.title === filmData.title)) {
+        // do nothing
+        data.favorites.push(favoriteObj);
+      }
+    });
 
     const $watch = document.createElement('i');
     $watch.setAttribute('class', 'fa-regular fa-bookmark');
@@ -139,18 +166,6 @@ function createFilmCardPreview(filmData) {
   $filmImg.setAttribute('src', filmData.image);
   $halfDiv.append($filmImg);
 
-  const $favWatchDiv = document.createElement('div');
-  $favWatchDiv.setAttribute('class', 'fav-watch');
-  $halfDiv.append($favWatchDiv);
-
-  const $favIcon = document.createElement('i');
-  $favIcon.setAttribute('class', 'fa-regular fa-heart');
-  $favWatchDiv.append($favIcon);
-
-  const $watchIcon = document.createElement('i');
-  $watchIcon.setAttribute('class', 'fa-regular fa-bookmark');
-  $favWatchDiv.append($watchIcon);
-
   const $halfDiv2 = document.createElement('div');
   $halfDiv2.setAttribute('class', 'column-half');
   $cardDiv.append($halfDiv2);
@@ -175,4 +190,65 @@ function createFilmCardPreview(filmData) {
   $infoDiv.append($desc);
   const shorten = filmData.description.slice(0, 101) + '...';
   $desc.textContent = shorten;
+}
+
+// Favoriting Functionality
+function toggleNoEntry() {
+  const $noEntries = document.querySelector('.no-entries');
+  const empty = data.favorites.length;
+  if (empty > 0) {
+    $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
+  }
+}
+
+const $favoritesTab = document.querySelector('#favorites');
+const $favoritesView = document.querySelector('.container4');
+$favoritesTab.addEventListener('click', function () {
+  toggleNoEntry();
+
+  favoritedFilm();
+  $filmsPage.classList.add('hidden');
+  $aboutPage.classList.add('hidden');
+  $modal.classList.add('hidden');
+  $fullPage.classList.add('hidden');
+  $favoritesView.classList.remove('hidden');
+});
+
+function favoritedFilm() {
+  const $favorites = document.querySelector('.favorites');
+
+  for (let i = 0; i < data.favorites.length; i++) {
+    const $favCard = document.createElement('div');
+    $favCard.setAttribute('class', 'fav-card');
+    $favorites.append($favCard);
+
+    const $favColumn = document.createElement('div');
+    $favColumn.setAttribute('class', 'favorite-column');
+    $favCard.append($favColumn);
+
+    const $img = document.createElement('img');
+    $img.setAttribute('src', data.favorites[i].image);
+    $favColumn.append($img);
+
+    const $filmInfo = document.createElement('div');
+    $filmInfo.setAttribute('class', 'film-info');
+    $favColumn.append($filmInfo);
+
+    const $filmTitle = document.createElement('h3');
+    $filmInfo.append($filmTitle);
+    $filmTitle.textContent = data.favorites[i].original_title;
+
+    const $filmTitleEng = document.createElement('h3');
+    $filmInfo.append($filmTitleEng);
+    $filmTitleEng.textContent = data.favorites[i].title;
+  }
+}
+
+function removeDom() {
+  const favQ = document.querySelectorAll('.fav-card');
+  for (let i = 0; i < favQ.length; i++) {
+    favQ[i].remove();
+  }
 }

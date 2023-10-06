@@ -12,7 +12,6 @@ nav {
 
 .container {
   background-color: #3a3a3a;
-  height: 100%;
   padding-bottom: 5rem;
 }
 
@@ -53,7 +52,7 @@ h2 {
 
 .film-card {
   display: flex;
-  background-color: #ffff;
+  background-color: #fff;
   margin: 1.4rem;
   height: 18rem;
   border-radius: 0.7rem;
@@ -219,4 +218,41 @@ p {
 
 #ghibli-crew {
   width: 90%;
+}
+
+/* Favorites Page Styling */
+.container4 {
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite-page {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.favorite-column > img {
+  width: 9rem;
+  border-radius: 1rem;
+}
+
+.fav-watch > .fa-solid {
+  color: red;
+}
+
+.favorite-column {
+  background-color: #fff;
+  margin: 1rem 5rem 2rem;
+  border-radius: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.9rem;
+}
+
+.no-entries {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  color: #f68282;
 }
