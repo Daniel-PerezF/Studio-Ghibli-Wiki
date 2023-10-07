@@ -188,13 +188,14 @@ p {
 }
 
 /* Full Film Cards */
-.full-card {
+
+/* .full-card {
   width: 100;
   height: 100%;
   background-color: #ffff;
   margin: 1.4rem;
   border-radius: 0.7rem;
-}
+} */
 
 .full-info > img {
   width: 100%;
@@ -257,30 +258,7 @@ p {
   color: #f68282;
 }
 
-/* Delete Modal and Buttons */
-.container5 {
-  background-color: #81968f;
-  padding: 1rem;
-  margin: 2rem;
-  border-radius: 0.5rem;
-  position: absolute;
-  top: 30%;
-}
-
-.delete-modal {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-}
-
-.confirmation-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 1.5rem;
-}
-
+/* Delete Fav and Buttons */
 .remove {
   background-color: #cfb9a5;
   border: none;
@@ -292,16 +270,5 @@ p {
 
 .remove:hover {
   box-shadow: 2px 2px 2px #968a7f;
-}
-
-#yes {
-  border: none;
-  border-radius: 0.3rem;
-  padding: 0.1rem 0.5rem;
-}
-
-#no {
-  border: none;
-  border-radius: 0.3rem;
-  padding: 0.1rem 0.5rem;
+  cursor: pointer;
 }
