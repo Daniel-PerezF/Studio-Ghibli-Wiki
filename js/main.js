@@ -264,13 +264,15 @@ function favoritedFilm() {
       btn.addEventListener('click', function () {
         const card = btn.parentElement;
         const cardId = card.getAttribute('data-id');
-        for (let j = 0; data.length; j++) {
-          if (data[j].id === cardId) {
-            data.splice(j, 1);
+        for (let j = 0; j < data.favorites.length; j++) {
+          const dataArr = data.favorites[j];
+          if (dataArr.id === cardId) {
+            data.favorites.splice(j, 1);
           }
         }
 
         removeFavorites(cardId);
+        toggleNoEntry();
       });
 
     }
@@ -286,6 +288,7 @@ function removeFavorites(id) {
     const cardId = card.getAttribute('data-id');
     if (cardId === id) {
       $favorites.removeChild(card);
+
     }
   }
 }
