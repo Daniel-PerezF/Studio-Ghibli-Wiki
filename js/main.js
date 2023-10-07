@@ -172,6 +172,7 @@ function createFilmCardPreview(filmData) {
 
   const $infoDiv = document.createElement('div');
   $infoDiv.setAttribute('class', 'film-info');
+  $infoDiv.setAttribute('data-id', filmData.id);
   $halfDiv2.append($infoDiv);
 
   const $filmName = document.createElement('h3');
@@ -216,12 +217,15 @@ $favoritesTab.addEventListener('click', function () {
   $favoritesView.classList.remove('hidden');
 });
 
+// const $deleteModal = document.querySelector('.container5');
+// console.log('$deleteModal:', $deleteModal);
 function favoritedFilm() {
   const $favorites = document.querySelector('.favorites');
 
   for (let i = 0; i < data.favorites.length; i++) {
     const $favCard = document.createElement('div');
     $favCard.setAttribute('class', 'fav-card');
+    $favCard.setAttribute('data-id', data.favorites[i].id);
     $favorites.append($favCard);
 
     const $favColumn = document.createElement('div');
@@ -234,6 +238,7 @@ function favoritedFilm() {
 
     const $filmInfo = document.createElement('div');
     $filmInfo.setAttribute('class', 'film-info');
+    $filmInfo.setAttribute('data-id', data.favorites[i].id);
     $favColumn.append($filmInfo);
 
     const $filmTitle = document.createElement('h3');
@@ -249,6 +254,39 @@ function favoritedFilm() {
     $removeBtn.setAttribute('type', 'button');
     $removeBtn.textContent = 'Remove';
     $filmInfo.append($removeBtn);
+
+    // $removeBtn.addEventListener('click', function () {
+    // $deleteModal.classList.remove('hidden');
+
+    const $removeBtns = document.querySelectorAll('.remove');
+    for (let i = 0; i < $removeBtns.length; i++) {
+      const btn = $removeBtns[i];
+      btn.addEventListener('click', function () {
+        const card = btn.parentElement;
+        const cardId = card.getAttribute('data-id');
+        for (let j = 0; data.length; j++) {
+          if (data[j].id === cardId) {
+            data.splice(j, 1);
+          }
+        }
+
+        removeFavorites(cardId);
+      });
+
+    }
+
+  }
+}
+
+function removeFavorites(id) {
+  const favCards = document.querySelectorAll('.fav-card');
+  const $favorites = document.querySelector('.favorites');
+  for (let i = 0; i < favCards.length; i++) {
+    const card = favCards[i];
+    const cardId = card.getAttribute('data-id');
+    if (cardId === id) {
+      $favorites.removeChild(card);
+    }
   }
 }
 
@@ -258,3 +296,33 @@ function removeDom() {
     favQ[i].remove();
   }
 }
+
+// const $noBtn = document.querySelector('#no');
+// $noBtn.addEventListener('click', function () {
+//   $deleteModal.classList.add('hidden');
+
+// });
+
+// const $yesBtn = document.querySelector('#yes');
+// $yesBtn.addEventListener('click', function () {
+//   for (let i = 0; i < data.favorites.length; i++) {
+//     removeFavorites();
+//     // console.log(data.favorites.length);
+//   }
+
+// });
+
+// function removeFavorites(id) {
+//   const $favorites = document.querySelector('.favorites');
+//   const favCards = document.querySelectorAll('.fav-card');
+//   for (let i = 0; i < favCards.length; i++) {
+//     const card = favCards[i];
+//     const cardId = card.getAttribute('data-id');
+//     if (cardId === id) {
+//       console.log('cardID:', cardId);
+//     }
+//   }
+
+// }
+
+// removeFavorites();

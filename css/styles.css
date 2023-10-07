@@ -259,10 +259,12 @@ p {
 
 /* Delete Modal and Buttons */
 .container5 {
-  /* display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-direction: column; */
+  background-color: #81968f;
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 30%;
 }
 
 .delete-modal {
@@ -273,18 +275,14 @@ p {
   text-align: center;
 }
 
-/* #yes{
-
-} */
-
 .confirmation-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   padding-top: 1.5rem;
 }
 
 .remove {
-  background-color: #ffa69e;
+  background-color: #cfb9a5;
   border: none;
   border-radius: 0.2rem;
   padding: 0.2rem;
@@ -293,5 +291,17 @@ p {
 }
 
 .remove:hover {
-  box-shadow: 2px 2px 2px #d79d98;
+  box-shadow: 2px 2px 2px #968a7f;
+}
+
+#yes {
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.5rem;
+}
+
+#no {
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.5rem;
 }
