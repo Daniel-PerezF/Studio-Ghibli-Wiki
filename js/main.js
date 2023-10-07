@@ -217,8 +217,6 @@ $favoritesTab.addEventListener('click', function () {
   $favoritesView.classList.remove('hidden');
 });
 
-// const $deleteModal = document.querySelector('.container5');
-// console.log('$deleteModal:', $deleteModal);
 function favoritedFilm() {
   const $favorites = document.querySelector('.favorites');
 
@@ -255,15 +253,12 @@ function favoritedFilm() {
     $removeBtn.textContent = 'Remove';
     $filmInfo.append($removeBtn);
 
-    // $removeBtn.addEventListener('click', function () {
-    // $deleteModal.classList.remove('hidden');
-
     const $removeBtns = document.querySelectorAll('.remove');
     for (let i = 0; i < $removeBtns.length; i++) {
-      const btn = $removeBtns[i];
-      btn.addEventListener('click', function () {
-        const card = btn.parentElement;
-        const cardId = card.getAttribute('data-id');
+      const $btn = $removeBtns[i];
+      $btn.addEventListener('click', function () {
+        const $card = $btn.parentElement;
+        const cardId = $card.getAttribute('data-id');
         for (let j = 0; j < data.favorites.length; j++) {
           const dataArr = data.favorites[j];
           if (dataArr.id === cardId) {
@@ -274,21 +269,18 @@ function favoritedFilm() {
         removeFavorites(cardId);
         toggleNoEntry();
       });
-
     }
-
   }
 }
 
 function removeFavorites(id) {
-  const favCards = document.querySelectorAll('.fav-card');
+  const $favCards = document.querySelectorAll('.fav-card');
   const $favorites = document.querySelector('.favorites');
-  for (let i = 0; i < favCards.length; i++) {
-    const card = favCards[i];
-    const cardId = card.getAttribute('data-id');
-    if (cardId === id) {
-      $favorites.removeChild(card);
-
+  for (let i = 0; i < $favCards.length; i++) {
+    const $card = $favCards[i];
+    const $cardId = $card.getAttribute('data-id');
+    if ($cardId === id) {
+      $favorites.removeChild($card);
     }
   }
 }
@@ -299,33 +291,3 @@ function removeDom() {
     favQ[i].remove();
   }
 }
-
-// const $noBtn = document.querySelector('#no');
-// $noBtn.addEventListener('click', function () {
-//   $deleteModal.classList.add('hidden');
-
-// });
-
-// const $yesBtn = document.querySelector('#yes');
-// $yesBtn.addEventListener('click', function () {
-//   for (let i = 0; i < data.favorites.length; i++) {
-//     removeFavorites();
-//     // console.log(data.favorites.length);
-//   }
-
-// });
-
-// function removeFavorites(id) {
-//   const $favorites = document.querySelector('.favorites');
-//   const favCards = document.querySelectorAll('.fav-card');
-//   for (let i = 0; i < favCards.length; i++) {
-//     const card = favCards[i];
-//     const cardId = card.getAttribute('data-id');
-//     if (cardId === id) {
-//       console.log('cardID:', cardId);
-//     }
-//   }
-
-// }
-
-// removeFavorites();
