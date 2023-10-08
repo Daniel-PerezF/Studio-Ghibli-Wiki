@@ -172,6 +172,7 @@ function createFilmCardPreview(filmData) {
 
   const $infoDiv = document.createElement('div');
   $infoDiv.setAttribute('class', 'film-info');
+  $infoDiv.setAttribute('data-id', filmData.id);
   $halfDiv2.append($infoDiv);
 
   const $filmName = document.createElement('h3');
@@ -222,6 +223,7 @@ function favoritedFilm() {
   for (let i = 0; i < data.favorites.length; i++) {
     const $favCard = document.createElement('div');
     $favCard.setAttribute('class', 'fav-card');
+    $favCard.setAttribute('data-id', data.favorites[i].id);
     $favorites.append($favCard);
 
     const $favColumn = document.createElement('div');
@@ -234,6 +236,7 @@ function favoritedFilm() {
 
     const $filmInfo = document.createElement('div');
     $filmInfo.setAttribute('class', 'film-info');
+    $filmInfo.setAttribute('data-id', data.favorites[i].id);
     $favColumn.append($filmInfo);
 
     const $filmTitle = document.createElement('h3');
@@ -243,6 +246,42 @@ function favoritedFilm() {
     const $filmTitleEng = document.createElement('h3');
     $filmInfo.append($filmTitleEng);
     $filmTitleEng.textContent = data.favorites[i].title;
+
+    const $removeBtn = document.createElement('button');
+    $removeBtn.setAttribute('class', 'remove');
+    $removeBtn.setAttribute('type', 'button');
+    $removeBtn.textContent = 'Remove';
+    $filmInfo.append($removeBtn);
+
+    const $removeBtns = document.querySelectorAll('.remove');
+    for (let i = 0; i < $removeBtns.length; i++) {
+      const $btn = $removeBtns[i];
+      $btn.addEventListener('click', function () {
+        const $card = $btn.parentElement;
+        const cardId = $card.getAttribute('data-id');
+        for (let j = 0; j < data.favorites.length; j++) {
+          const dataArr = data.favorites[j];
+          if (dataArr.id === cardId) {
+            data.favorites.splice(j, 1);
+          }
+        }
+
+        removeFavorites(cardId);
+        toggleNoEntry();
+      });
+    }
+  }
+}
+
+function removeFavorites(id) {
+  const $favCards = document.querySelectorAll('.fav-card');
+  const $favorites = document.querySelector('.favorites');
+  for (let i = 0; i < $favCards.length; i++) {
+    const $card = $favCards[i];
+    const $cardId = $card.getAttribute('data-id');
+    if ($cardId === id) {
+      $favorites.removeChild($card);
+    }
   }
 }
 
