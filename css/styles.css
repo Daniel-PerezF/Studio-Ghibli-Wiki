@@ -89,11 +89,11 @@ h2 {
 }
 
 .fa-heart:hover {
-  color: red;
+  color: #d63e18;
 }
 
 .fa-bookmark:hover {
-  color: blue;
+  color: #8292a0;
 }
 
 p {
@@ -229,8 +229,8 @@ p {
   border-radius: 1rem;
 }
 
-.fav-watch > .fa-solid {
-  color: red;
+#solid-favorite {
+  color: #d63e18;
 }
 
 .favorite-column {
@@ -249,7 +249,7 @@ p {
   color: #f68282;
 }
 
-/* Delete Fav and Buttons */
+/* Delete Favorite Buttons */
 .remove {
   background-color: #cfb9a5;
   border: none;
@@ -262,4 +262,57 @@ p {
 .remove:hover {
   box-shadow: 2px 2px 2px #968a7f;
   cursor: pointer;
+}
+
+/* Watchlist Styling */
+.container5 {
+  display: flex;
+  flex-direction: column;
+}
+
+.watchlist-page {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.watchlist-column > img {
+  width: 9rem;
+  border-radius: 1rem;
+}
+
+.watchlist-column {
+  background-color: #fff;
+  margin: 1rem 5rem 2rem;
+  border-radius: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.9rem;
+}
+
+.watch-no-entries {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  color: #f68282;
+}
+
+/* Delete Watchlist Buttons */
+
+.remove-watchlist {
+  background-color: #cfb9a5;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-family: "Tenor sans", sans-serif;
+  transition: 0.2s ease;
+}
+
+.remove-watchlist:hover {
+  box-shadow: 2px 2px 2px #968a7f;
+  cursor: pointer;
+}
+
+#solid-watchlist {
+  color: #8292a0;
 }

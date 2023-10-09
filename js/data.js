@@ -1,6 +1,7 @@
 /* exported data */
 let data = {
-  favorites: []
+  favorites: [],
+  watchlist: []
 };
 
 window.addEventListener('beforeunload', function (event) {
