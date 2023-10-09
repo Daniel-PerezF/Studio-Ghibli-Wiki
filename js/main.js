@@ -321,41 +321,42 @@ $watchlistPage.addEventListener('click', function () {
   $watchlistView.classList.remove('hidden');
 });
 
-// function watchlistFilms() {
-//   const $watchlist = document.querySelector('.watchlist');
+function watchlistFilms() {
+  const $watchlist = document.querySelector('.watchlist');
 
-//   for (let i = 0; i < data.watchlist.length; i++) {
-//     const $watchCard = document.createElement('div');
-//     $watchCard.setAttribute('class', 'watch-card');
-//     $watchCard.setAttribute('data-watch-id', data.watchlist[i].id);
-//     $watchlist.append($watchCard);
+  for (let i = 0; i < data.watchlist.length; i++) {
+    const $watchCard = document.createElement('div');
+    $watchCard.setAttribute('class', 'watch-card');
+    $watchCard.setAttribute('data-watch-id', data.watchlist[i].id);
+    $watchlist.append($watchCard);
 
-//     const $watchlistColumn = document.createElement('div');
-//     $watchlistColumn.setAttribute('class', 'watchlist-column');
-//     $watchCard.append($watchlistColumn);
+    const $watchlistColumn = document.createElement('div');
+    $watchlistColumn.setAttribute('class', 'watchlist-column');
+    $watchCard.append($watchlistColumn);
 
-//     const $img = document.createElement('img');
-//     $img.setAttribute('src', data.watchlist[i].image);
-//     $watchlistColumn.append($img);
+    const $img = document.createElement('img');
+    $img.setAttribute('src', data.watchlist[i].image);
+    $watchlistColumn.append($img);
 
-//     const $watchlistInfo = document.createElement('div');
-//     $watchlistInfo.setAttribute('class', 'watchlist-info');
-//     $watchlistInfo.setAttribute('data-watch-id', data.watchlist[i].id);
-//     $watchlistColumn.append($watchlistInfo);
+    const $watchlistInfo = document.createElement('div');
+    $watchlistInfo.setAttribute('class', 'watchlist-info');
+    $watchlistInfo.setAttribute('data-watch-id', data.watchlist[i].id);
+    $watchlistColumn.append($watchlistInfo);
 
-//     const $filmTitle = document.createElement('h3');
-//     $watchlistInfo.append($filmTitle);
-//     $filmTitle.textContent = data.watchlist[i].original_title;
+    const $filmTitle = document.createElement('h3');
+    $watchlistInfo.append($filmTitle);
+    $filmTitle.textContent = data.watchlist[i].original_title;
 
-//     const $filmTitleEng = document.createElement('h3');
-//     $watchlistInfo.append($filmTitleEng);
-//     $filmTitleEng.textContent = data.watchlist[i].title;
+    const $filmTitleEng = document.createElement('h3');
+    $watchlistInfo.append($filmTitleEng);
+    $filmTitleEng.textContent = data.watchlist[i].title;
 
-//     const $removeBtn = document.createElement('button');
-//     $removeBtn.setAttribute('class', 'remove');
-//     $removeBtn.setAttribute('type', 'button');
-//     $removeBtn.textContent = 'Remove';
-//     $watchlistInfo.append($removeBtn);
+    const $removeBtn = document.createElement('button');
+    $removeBtn.setAttribute('class', 'remove-watchlist');
+    $removeBtn.setAttribute('type', 'button');
+    $removeBtn.textContent = 'Remove';
+    $watchlistInfo.append($removeBtn);
 
-//   }
-// }
+  }
+}
+watchlistFilms();
