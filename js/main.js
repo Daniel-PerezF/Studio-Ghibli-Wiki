@@ -8,6 +8,7 @@ $ghibliImg.addEventListener('click', function () {
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
   $favoritesView.classList.add('hidden');
+  $watchlistView.classList.add('hidden');
   removeDom();
 });
 
@@ -31,6 +32,7 @@ $aboutBtn.addEventListener('click', function () {
   $aboutPage.classList.remove('hidden');
   $modal.classList.add('hidden');
   $favoritesView.classList.add('hidden');
+  $watchlistView.classList.add('hidden');
   removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
@@ -44,6 +46,7 @@ $filmsBtn.addEventListener('click', function () {
   $modal.classList.add('hidden');
   $fullPage.classList.remove('hidden');
   $favoritesView.classList.add('hidden');
+  $watchlistView.classList.add('hidden');
   removeDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
@@ -128,6 +131,18 @@ function createFilmCardPreview(filmData) {
     const $watch = document.createElement('i');
     $watch.setAttribute('class', 'fa-regular fa-bookmark');
     $favWatchDiv.append($watch);
+
+    $watch.addEventListener('click', function () {
+      $watch.setAttribute('class', 'fa-solid fa-bookmark');
+
+      // const watchlistObj = {
+      //   id: filmData.id,
+      //   title: filmData.title,
+      //   original_title: filmData.original_title,
+      //   image: filmData.image
+      // };
+      // console.log('im running');
+    });
 
     const $textInfoDiv = document.createElement('div');
     $textInfoDiv.setAttribute('class', 'text-info');
@@ -215,6 +230,7 @@ $favoritesTab.addEventListener('click', function () {
   $modal.classList.add('hidden');
   $fullPage.classList.add('hidden');
   $favoritesView.classList.remove('hidden');
+  $watchlistView.classList.add('hidden');
 });
 
 function favoritedFilm() {
@@ -291,3 +307,55 @@ function removeDom() {
     favQ[i].remove();
   }
 }
+
+// Watchlist Functionality
+
+const $watchlistPage = document.querySelector('#watchlist');
+const $watchlistView = document.querySelector('.container5');
+$watchlistPage.addEventListener('click', function () {
+  $filmsPage.classList.add('hidden');
+  $aboutPage.classList.add('hidden');
+  $modal.classList.add('hidden');
+  $fullPage.classList.add('hidden');
+  $favoritesView.classList.add('hidden');
+  $watchlistView.classList.remove('hidden');
+});
+
+// function watchlistFilms() {
+//   const $watchlist = document.querySelector('.watchlist');
+
+//   for (let i = 0; i < data.watchlist.length; i++) {
+//     const $watchCard = document.createElement('div');
+//     $watchCard.setAttribute('class', 'watch-card');
+//     $watchCard.setAttribute('data-watch-id', data.watchlist[i].id);
+//     $watchlist.append($watchCard);
+
+//     const $watchlistColumn = document.createElement('div');
+//     $watchlistColumn.setAttribute('class', 'watchlist-column');
+//     $watchCard.append($watchlistColumn);
+
+//     const $img = document.createElement('img');
+//     $img.setAttribute('src', data.watchlist[i].image);
+//     $watchlistColumn.append($img);
+
+//     const $watchlistInfo = document.createElement('div');
+//     $watchlistInfo.setAttribute('class', 'watchlist-info');
+//     $watchlistInfo.setAttribute('data-watch-id', data.watchlist[i].id);
+//     $watchlistColumn.append($watchlistInfo);
+
+//     const $filmTitle = document.createElement('h3');
+//     $watchlistInfo.append($filmTitle);
+//     $filmTitle.textContent = data.watchlist[i].original_title;
+
+//     const $filmTitleEng = document.createElement('h3');
+//     $watchlistInfo.append($filmTitleEng);
+//     $filmTitleEng.textContent = data.watchlist[i].title;
+
+//     const $removeBtn = document.createElement('button');
+//     $removeBtn.setAttribute('class', 'remove');
+//     $removeBtn.setAttribute('type', 'button');
+//     $removeBtn.textContent = 'Remove';
+//     $watchlistInfo.append($removeBtn);
+
+//   }
+// }

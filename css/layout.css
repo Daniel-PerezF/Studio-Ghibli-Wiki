@@ -49,6 +49,14 @@
   text-align: center;
 }
 
+.watchlist {
+  min-height: 100vh;
+  border-radius: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.9rem;
+  text-align: center;
+}
+
 @media screen and (min-width: 1078px) {
   .full-info {
     flex-direction: row;
