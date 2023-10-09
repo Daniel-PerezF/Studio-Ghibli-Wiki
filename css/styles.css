@@ -302,7 +302,7 @@ p {
 
 /* Delete Fav and Buttons */
 
-/* .remove {
+.remove-watchlist {
   background-color: #cfb9a5;
   border: none;
   border-radius: 0.2rem;
@@ -310,8 +310,8 @@ p {
   font-family: "Tenor sans", sans-serif;
   transition: 0.2s ease;
 }
-.remove:hover {
+
+.remove-watchlist:hover {
   box-shadow: 2px 2px 2px #968a7f;
   cursor: pointer;
 }
-} */

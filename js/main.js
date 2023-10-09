@@ -131,17 +131,24 @@ function createFilmCardPreview(filmData) {
     const $watch = document.createElement('i');
     $watch.setAttribute('class', 'fa-regular fa-bookmark');
     $favWatchDiv.append($watch);
+    if (data.watchlist.some(anime => anime.title === filmData.title)) {
+      // do nothing
+      $watch.setAttribute('class', 'fa-solid fa-bookmark');
+    }
 
     $watch.addEventListener('click', function () {
       $watch.setAttribute('class', 'fa-solid fa-bookmark');
 
-      // const watchlistObj = {
-      //   id: filmData.id,
-      //   title: filmData.title,
-      //   original_title: filmData.original_title,
-      //   image: filmData.image
-      // };
-      // console.log('im running');
+      const watchlistObj = {
+        id: filmData.id,
+        title: filmData.title,
+        original_title: filmData.original_title,
+        image: filmData.image
+      };
+      if (!data.watchlist.some(anime => anime.title === filmData.title)) {
+        // do nothing
+        data.watchlist.push(watchlistObj);
+      }
     });
 
     const $textInfoDiv = document.createElement('div');
