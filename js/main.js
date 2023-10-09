@@ -10,6 +10,7 @@ $ghibliImg.addEventListener('click', function () {
   $favoritesView.classList.add('hidden');
   $watchlistView.classList.add('hidden');
   removeDom();
+  removeWatchlistDom();
 });
 
 const $menu = document.querySelector('#menu');
@@ -34,6 +35,7 @@ $aboutBtn.addEventListener('click', function () {
   $favoritesView.classList.add('hidden');
   $watchlistView.classList.add('hidden');
   removeDom();
+  removeWatchlistDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -48,6 +50,7 @@ $filmsBtn.addEventListener('click', function () {
   $favoritesView.classList.add('hidden');
   $watchlistView.classList.add('hidden');
   removeDom();
+  removeWatchlistDom();
   while ($fullPage.firstChild) {
     $fullPage.removeChild($fullPage.lastChild);
   }
@@ -230,6 +233,7 @@ const $favoritesTab = document.querySelector('#favorites');
 const $favoritesView = document.querySelector('.container4');
 $favoritesTab.addEventListener('click', function () {
   toggleNoEntry();
+  removeWatchlistDom();
 
   favoritedFilm();
   $filmsPage.classList.add('hidden');
@@ -320,6 +324,9 @@ function removeDom() {
 const $watchlistPage = document.querySelector('#watchlist');
 const $watchlistView = document.querySelector('.container5');
 $watchlistPage.addEventListener('click', function () {
+  toggleWatchNoEntry();
+  removeWatchlistDom();
+  watchlistFilms();
   $filmsPage.classList.add('hidden');
   $aboutPage.classList.add('hidden');
   $modal.classList.add('hidden');
@@ -327,6 +334,13 @@ $watchlistPage.addEventListener('click', function () {
   $favoritesView.classList.add('hidden');
   $watchlistView.classList.remove('hidden');
 });
+
+function removeWatchlistDom() {
+  const $watchlist = document.querySelectorAll('.watch-card');
+  for (let i = 0; i < $watchlist.length; i++) {
+    $watchlist[i].remove();
+  }
+}
 
 function watchlistFilms() {
   const $watchlist = document.querySelector('.watchlist');
@@ -366,4 +380,13 @@ function watchlistFilms() {
 
   }
 }
-watchlistFilms();
+
+function toggleWatchNoEntry() {
+  const $noEntries = document.querySelector('.watch-no-entries');
+  const empty = data.watchlist.length;
+  if (empty > 0) {
+    $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
+  }
+}
