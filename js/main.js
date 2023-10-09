@@ -112,12 +112,13 @@ function createFilmCardPreview(filmData) {
     $fav.setAttribute('class', 'fa-regular fa-heart');
     $favWatchDiv.append($fav);
     if (data.favorites.some(anime => anime.title === filmData.title)) {
-      // do nothing
       $fav.setAttribute('class', 'fa-solid fa-heart');
+      $fav.setAttribute('id', 'solid-favorite');
     }
 
     $fav.addEventListener('click', function () {
       $fav.setAttribute('class', 'fa-solid fa-heart');
+      $fav.setAttribute('id', 'solid-favorite');
       const favoriteObj = {
         id: filmData.id,
         title: filmData.title,
@@ -126,7 +127,6 @@ function createFilmCardPreview(filmData) {
       };
 
       if (!data.favorites.some(anime => anime.title === filmData.title)) {
-        // do nothing
         data.favorites.push(favoriteObj);
       }
     });
@@ -135,12 +135,13 @@ function createFilmCardPreview(filmData) {
     $watch.setAttribute('class', 'fa-regular fa-bookmark');
     $favWatchDiv.append($watch);
     if (data.watchlist.some(anime => anime.title === filmData.title)) {
-      // do nothing
       $watch.setAttribute('class', 'fa-solid fa-bookmark');
+      $watch.setAttribute('id', 'solid-watchlist');
     }
 
     $watch.addEventListener('click', function () {
       $watch.setAttribute('class', 'fa-solid fa-bookmark');
+      $watch.setAttribute('id', 'solid-watchlist');
 
       const watchlistObj = {
         id: filmData.id,
@@ -149,7 +150,6 @@ function createFilmCardPreview(filmData) {
         image: filmData.image
       };
       if (!data.watchlist.some(anime => anime.title === filmData.title)) {
-        // do nothing
         data.watchlist.push(watchlistObj);
       }
     });

@@ -89,11 +89,11 @@ h2 {
 }
 
 .fa-heart:hover {
-  color: red;
+  color: #d63e18;
 }
 
 .fa-bookmark:hover {
-  color: blue;
+  color: #8292a0;
 }
 
 p {
@@ -229,8 +229,8 @@ p {
   border-radius: 1rem;
 }
 
-.fav-watch > .fa-solid {
-  color: red;
+#solid-favorite {
+  color: #d63e18;
 }
 
 .favorite-column {
@@ -249,7 +249,7 @@ p {
   color: #f68282;
 }
 
-/* Delete Fav and Buttons */
+/* Delete Favorite Buttons */
 .remove {
   background-color: #cfb9a5;
   border: none;
@@ -281,9 +281,6 @@ p {
   border-radius: 1rem;
 }
 
-/* .fav-watch > .fa-solid {
-  color: red; */
-
 .watchlist-column {
   background-color: #fff;
   margin: 1rem 5rem 2rem;
@@ -300,7 +297,7 @@ p {
   color: #f68282;
 }
 
-/* Delete Fav and Buttons */
+/* Delete Watchlist Buttons */
 
 .remove-watchlist {
   background-color: #cfb9a5;
@@ -314,4 +311,8 @@ p {
 .remove-watchlist:hover {
   box-shadow: 2px 2px 2px #968a7f;
   cursor: pointer;
+}
+
+#solid-watchlist {
+  color: #8292a0;
 }
