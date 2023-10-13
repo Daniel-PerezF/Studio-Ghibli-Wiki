@@ -320,7 +320,6 @@ function removeDom() {
 }
 
 // Watchlist Functionality
-
 const $watchlistPage = document.querySelector('#watchlist');
 const $watchlistView = document.querySelector('.container5');
 $watchlistPage.addEventListener('click', function () {
@@ -378,24 +377,21 @@ function watchlistFilms() {
     $removeBtn.textContent = 'Remove';
     $watchlistInfo.append($removeBtn);
 
-    const $removeBtns = document.querySelectorAll('.remove-watchlist');
-    for (let i = 0; i < $removeBtns.length; i++) {
-      const $btn = $removeBtns[i];
-      $btn.addEventListener('click', function () {
-        const $card = $btn.parentElement;
-        const cardId = $card.getAttribute('data-watch-id');
-        for (let j = 0; j < data.watchlist.length; j++) {
-          const dataArr = data.watchlist[j];
-          if (dataArr.id === cardId) {
-            data.watchlist.splice(j, 1);
-          }
+    $removeBtn.addEventListener('click', function () {
+      const $card = $removeBtn.parentElement;
+      const cardId = $card.getAttribute('data-watch-id');
+      for (let j = 0; j < data.watchlist.length; j++) {
+        const dataArr = data.watchlist[j];
+        if (dataArr.id === cardId) {
+          data.watchlist.splice(j, 1);
         }
-        removeWatchlist(cardId);
-        toggleWatchNoEntry();
-      });
-    }
+      }
+      removeWatchlist(cardId);
+      toggleWatchNoEntry();
+    });
   }
 }
+// }
 function removeWatchlist(id) {
   const $watchCards = document.querySelectorAll('.watch-card');
   const $watchlist = document.querySelector('.watchlist');
